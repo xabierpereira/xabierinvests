@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XabierInvests — Cartera en tiempo real</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#080b0f;--bg2:#0d1117;--bg3:#111820;
+  --gold:#c9a84c;--gold2:#e8c97a;
+  --text:#e8e6e0;--text2:#9a9590;--text3:#5a5550;
+  --border:#1e2530;--border2:#2a3340;
+  --green:#2dba7e;--red:#e85555;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 40px;
+  background:rgba(8,11,15,0.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{font-size:14px;font-weight:700;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase}
+.nav-right{display:flex;align-items:center;gap:16px}
+.status-pill{
+  display:flex;align-items:center;gap:6px;
+  font-family:'DM Mono',monospace;font-size:11px;color:var(--text3);
+  background:var(--bg3);border:1px solid var(--border);
+  padding:5px 12px;border-radius:20px;
+}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--text3);flex-shrink:0}
+.dot.live{background:var(--green);animation:pulse 2s infinite}
+.dot.err{background:var(--red)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.btn-refresh{
+  font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.08em;
+  color:var(--gold);background:transparent;
+  border:1px solid rgba(201,168,76,0.35);
+  padding:5px 14px;border-radius:3px;cursor:pointer;
+  transition:border-color 0.2s,background 0.2s;
+}
+.btn-refresh:hover{border-color:var(--gold);background:rgba(201,168,76,0.05)}
+
+/* MAIN */
+main{max-width:1100px;margin:0 auto;padding:40px 24px 80px}
+
+/* TOTALS */
+.totals{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:32px}
+.t-card{
+  background:var(--bg3);border:1px solid var(--border);
+  border-radius:8px;padding:20px;
+}
+.t-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text3);margin-bottom:10px}
+.t-val{font-family:'DM Mono',monospace;font-size:22px;font-weight:500;color:var(--text);letter-spacing:-0.02em}
+.t-val.green{color:var(--green)}
+.t-val.red{color:var(--red)}
+.t-val.gold{color:var(--gold)}
+
+/* TABLE */
+.table-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+table{width:100%;border-collapse:collapse;table-layout:fixed}
+col.c-asset{width:26%}
+col.c-shares{width:9%}
+col.c-avg{width:11%}
+col.c-price{width:11%}
+col.c-inv{width:11%}
+col.c-val{width:11%}
+col.c-gain{width:11%}
+col.c-pct{width:10%}
+thead tr{border-bottom:1px solid var(--border2);background:var(--bg3)}
+th{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--text3);
+  padding:12px 16px;text-align:right;font-weight:400;
+}
+th:first-child{text-align:left}
+tbody tr{border-bottom:1px solid var(--border);transition:background 0.12s}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{background:rgba(255,255,255,0.02)}
+td{padding:16px;font-size:13px;text-align:right;vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+td:first-child{text-align:left}
+.ticker{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--gold);display:block}
+.name{font-size:11px;color:var(--text3);margin-top:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mono{font-family:'DM Mono',monospace;font-size:13px}
+.up{color:var(--green)}
+.dn{color:var(--red)}
+.neu{color:var(--text2)}
+.shimmer{color:var(--text3);animation:shimmer 1.2s infinite}
+@keyframes shimmer{0%,100%{opacity:0.3}50%{opacity:0.8}}
+
+/* ERROR */
+.error-box{
+  background:rgba(232,85,85,0.07);border:1px solid rgba(232,85,85,0.2);
+  border-radius:8px;padding:16px 20px;margin-bottom:24px;
+  font-size:13px;color:var(--red);line-height:1.6;display:none;
+}
+
+/* FOOTER */
+footer{
+  max-width:1100px;margin:0 auto;padding:0 24px 40px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;
+}
+.footer-brand{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase}
+.footer-note{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);text-align:center}
+.footer-update{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3)}
+
+@media(max-width:700px){
+  nav{padding:14px 20px}
+  main{padding:24px 16px 60px}
+  .totals{grid-template-columns:1fr 1fr}
+  col.c-shares,col.c-avg,col.c-inv{display:none}
+  td:nth-child(2),td:nth-child(3),td:nth-child(5){display:none}
+  th:nth-child(2),th:nth-child(3),th:nth-child(5){display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">XabierInvests</div>
+  <div class="nav-right">
+    <div class="status-pill">
+      <div class="dot" id="dot"></div>
+      <span id="status-txt">Cargando...</span>
+    </div>
+    <button class="btn-refresh" onclick="loadPrices()">↻ Actualizar</button>
+  </div>
+</nav>
+
+<main>
+  <div class="error-box" id="error-box"></div>
+
+  <div class="totals">
+    <div class="t-card">
+      <div class="t-label">Invertido</div>
+      <div class="t-val gold" id="t-inv">—</div>
+    </div>
+    <div class="t-card">
+      <div class="t-label">Valor actual</div>
+      <div class="t-val" id="t-cur">—</div>
+    </div>
+    <div class="t-card">
+      <div class="t-label">Ganancia €</div>
+      <div class="t-val" id="t-gain">—</div>
+    </div>
+    <div class="t-card">
+      <div class="t-label">Retorno %</div>
+      <div class="t-val" id="t-pct">—</div>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <colgroup>
+        <col class="c-asset"><col class="c-shares"><col class="c-avg">
+        <col class="c-price"><col class="c-inv"><col class="c-val">
+        <col class="c-gain"><col class="c-pct">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Activo</th><th>Acciones</th><th>P. Medio</th>
+          <th>P. Actual</th><th>Invertido</th><th>Valor</th>
+          <th>+/- €</th><th>+/- %</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-brand">XabierInvests</div>
+  <div class="footer-note">Contenido educativo · No es asesoramiento financiero · DYOR</div>
+  <div class="footer-update" id="footer-update"></div>
+</footer>
+
+<script>
+// ── CONFIGURACIÓN ─────────────────────────────────────────────────────────────
+// Cambia esta URL por la de tu proxy Vercel después de desplegarlo
+const PROXY_URL = 'https://xabierinvests-api.vercel.app/api/prices';
+
+const POSITIONS = [
+  {ticker:'MST',  sym:'MSTR',    name:'Strategy Inc',         shares:3,      avg:128.15, cur:'USD'},
+  {ticker:'GLXY', sym:'GLXY.TO', name:'Galaxy Digital',       shares:10.99,  avg:19.59,  cur:'CAD'},
+  {ticker:'ORCL', sym:'ORCL',    name:'Oracle',               shares:1.453,  avg:146.80, cur:'USD'},
+  {ticker:'AMD',  sym:'AMD',     name:'AMD',                  shares:0.894,  avg:179.32, cur:'USD'},
+  {ticker:'IREN', sym:'IREN',    name:'Iris Energy',          shares:4.745,  avg:36.88,  cur:'USD'},
+  {ticker:'ASTS', sym:'ASTS',    name:'AST SpaceMobile',      shares:2.049,  avg:49.00,  cur:'USD'},
+  {ticker:'ISAC', sym:'ISAC.L',  name:'iShares MSCI ACWI',   shares:1.366,  avg:95.14,  cur:'GBP'},
+  {ticker:'PLTR', sym:'PLTR',    name:'Palantir Tech',        shares:1,      avg:125.88, cur:'USD'},
+  {ticker:'ETH',  sym:'ETH-EUR', name:'Ethereum',             shares:0.0357, avg:2607.63,cur:'EUR'},
+];
+
+// Pares de cambio que necesitamos
+const FX_PAIRS = ['USDEUR=X','CADEUR=X','GBPEUR=X'];
+
+function f(n, d=2){ return n.toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d}) }
+
+function setStatus(state, txt){
+  const dot = document.getElementById('dot');
+  const st  = document.getElementById('status-txt');
+  dot.className = 'dot' + (state==='live'?' live':state==='err'?' err':'');
+  st.textContent = txt;
+}
+
+async function fetchAll(symbols){
+  const url = `${PROXY_URL}?symbols=${symbols.join(',')}`;
+  const r = await fetch(url);
+  if(!r.ok) throw new Error(`HTTP ${r.status}`);
+  return r.json();
+}
+
+async function loadPrices(){
+  setStatus('', 'Actualizando...');
+  document.getElementById('error-box').style.display = 'none';
+
+  try {
+    const allSymbols = [...POSITIONS.map(p=>p.sym), ...FX_PAIRS];
+    const data = await fetchAll(allSymbols);
+
+    // Tipos de cambio a EUR
+    const rates = { EUR:1 };
+    rates['USD'] = data['USDEUR=X']?.price || 0.92;
+    rates['CAD'] = data['CADEUR=X']?.price || 0.68;
+    rates['GBP'] = data['GBPEUR=X']?.price || 1.17;
+
+    let totalInv=0, totalCur=0;
+    let successCount=0;
+    let html='';
+
+    for(const pos of POSITIONS){
+      const avgEUR  = pos.avg * rates[pos.cur];
+      const invested = pos.shares * avgEUR;
+      totalInv += invested;
+
+      const priceData = data[pos.sym];
+      let priceEUR=null, currentVal=null, gain=null, pct=null;
+
+      if(priceData?.price){
+        successCount++;
+        const fxRate = rates[priceData.currency] || rates[pos.cur] || 1;
+        priceEUR  = priceData.price * fxRate;
+        currentVal = pos.shares * priceEUR;
+        gain      = currentVal - invested;
+        pct       = (gain/invested)*100;
+        totalCur  += currentVal;
+      } else {
+        totalCur += invested;
+      }
+
+      const up = gain===null ? 'neu' : gain>=0 ? 'up' : 'dn';
+      const arr = gain===null ? '' : gain>=0 ? '↑ ' : '↓ ';
+      const sign = gain===null ? '' : gain>=0 ? '+' : '';
+
+      html += `<tr>
+        <td><span class="ticker">${pos.ticker}</span><span class="name">${pos.name}</span></td>
+        <td class="mono neu">${f(pos.shares, pos.shares<1?4:pos.shares<10?3:2)}</td>
+        <td class="mono neu">${f(avgEUR)}€</td>
+        <td class="mono ${up}">${priceEUR!==null ? f(priceEUR)+'€' : '<span class="shimmer">···</span>'}</td>
+        <td class="mono neu">${f(invested)}€</td>
+        <td class="mono ${up}">${currentVal!==null ? f(currentVal)+'€' : '<span class="shimmer">···</span>'}</td>
+        <td class="mono ${up}">${gain!==null ? sign+f(gain)+'€' : '<span class="shimmer">···</span>'}</td>
+        <td class="mono ${up}">${pct!==null ? arr+sign+f(pct)+'%' : '<span class="shimmer">···</span>'}</td>
+      </tr>`;
+    }
+
+    document.getElementById('tbody').innerHTML = html;
+
+    const totalGain = totalCur - totalInv;
+    const totalPct  = (totalGain/totalInv)*100;
+    const gc = totalGain>=0 ? 'green' : 'red';
+    const sign = totalGain>=0 ? '+' : '';
+
+    document.getElementById('t-inv').textContent  = f(totalInv)+'€';
+    document.getElementById('t-cur').textContent  = f(totalCur)+'€';
+    document.getElementById('t-gain').className   = `t-val ${gc}`;
+    document.getElementById('t-gain').textContent = sign+f(totalGain)+'€';
+    document.getElementById('t-pct').className    = `t-val ${gc}`;
+    document.getElementById('t-pct').textContent  = sign+f(totalPct)+'%';
+
+    const now = new Date().toLocaleTimeString('es-ES');
+    document.getElementById('footer-update').textContent = `Actualizado: ${now}`;
+
+    if(successCount===0){
+      setStatus('err',`0/${POSITIONS.length} activos`);
+    } else if(successCount<POSITIONS.length){
+      setStatus('live',`${successCount}/${POSITIONS.length} activos`);
+    } else {
+      setStatus('live','En vivo');
+    }
+
+  } catch(e){
+    setStatus('err','Error de conexión');
+    const eb = document.getElementById('error-box');
+    eb.style.display = 'block';
+    eb.textContent = `No se pudo conectar con el proxy. Asegúrate de haber desplegado la API en Vercel y actualizado PROXY_URL en este archivo. Error: ${e.message}`;
+  }
+}
+
+loadPrices();
+setInterval(loadPrices, 90000);
+</script>
+</body>
+</html>
