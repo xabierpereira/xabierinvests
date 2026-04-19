@@ -10,7 +10,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
   --bg:#080b0f;--bg2:#0d1117;--bg3:#111820;--bg4:#161e2a;
-  --gold:#c9a84c;--gold2:#e8c97a;--gold3:#f5e0a0;
+  --gold:#c9a84c;--gold2:#e8c97a;
   --text:#e8e6e0;--text2:#9a9590;--text3:#5a5550;
   --border:#1e2530;--border2:#2a3340;
   --green:#2dba7e;--red:#e85555;
@@ -21,15 +21,7 @@ body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--text);overfl
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
 
-/* NAV */
-nav{
-  position:sticky;top:0;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:18px 48px;
-  background:rgba(8,11,15,0.92);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--border);
-}
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(8,11,15,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
 .nav-logo{font-size:14px;font-weight:700;letter-spacing:0.14em;color:var(--gold);text-transform:uppercase}
 .nav-links{display:flex;gap:32px}
 .nav-links a{font-size:12px;color:var(--text2);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s}
@@ -40,88 +32,72 @@ nav{
 .dot.live{background:var(--green);animation:pulse 2s infinite}
 .dot.err{background:var(--red)}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-.btn-nav{font-family:'Syne',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--bg);background:var(--gold);border:none;padding:8px 18px;border-radius:3px;cursor:pointer;text-decoration:none;transition:background 0.2s}
+.btn-nav{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--bg);background:var(--gold);border:none;padding:8px 18px;border-radius:3px;cursor:pointer;text-decoration:none;transition:background 0.2s}
 .btn-nav:hover{background:var(--gold2)}
 
-/* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 48px 80px;position:relative;overflow:hidden}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.035) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 70% at 50% 50%,black 0%,transparent 100%)}
 .hero-tag{display:inline-flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--gold);text-transform:uppercase;border:1px solid rgba(201,168,76,0.3);padding:6px 14px;border-radius:2px;margin-bottom:32px;width:fit-content;position:relative}
-.hero-tag .dot{background:var(--green);animation:pulse 2s infinite}
 .hero h1{font-size:clamp(56px,9vw,104px);font-weight:800;line-height:0.9;letter-spacing:-0.03em;margin-bottom:8px;position:relative}
 .hero h1 .outline{color:transparent;-webkit-text-stroke:1px rgba(201,168,76,0.4)}
 .hero h1 .gold{color:var(--gold)}
-.hero-sub{font-size:clamp(14px,1.8vw,17px);color:var(--text2);line-height:1.7;max-width:500px;margin:28px 0 44px;font-weight:400;position:relative}
+.hero-sub{font-size:clamp(13px,1.6vw,16px);color:var(--text2);line-height:1.75;max-width:480px;margin:28px 0 44px;font-weight:400;position:relative}
 .hero-btns{display:flex;gap:14px;position:relative}
 .btn-primary{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--bg);background:var(--gold);padding:13px 26px;border-radius:3px;text-decoration:none;border:none;cursor:pointer;transition:background 0.2s,transform 0.1s}
 .btn-primary:hover{background:var(--gold2);transform:translateY(-1px)}
 .btn-ghost{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);background:transparent;padding:12px 26px;border-radius:3px;text-decoration:none;border:1px solid rgba(201,168,76,0.35);cursor:pointer;transition:border-color 0.2s,transform 0.1s}
 .btn-ghost:hover{border-color:var(--gold);transform:translateY(-1px)}
-.hero-stats{display:flex;gap:48px;margin-top:64px;padding-top:40px;border-top:1px solid var(--border);position:relative}
-.hstat-val{font-family:'DM Mono',monospace;font-size:30px;font-weight:500;letter-spacing:-0.02em}
+.hero-stats{display:flex;gap:48px;margin-top:64px;padding-top:40px;border-top:1px solid var(--border);position:relative;flex-wrap:wrap}
+.hstat-val{font-family:'DM Mono',monospace;font-size:28px;font-weight:500;letter-spacing:-0.02em}
 .hstat-val.green{color:var(--green)}
 .hstat-val.gold{color:var(--gold)}
 .hstat-label{font-size:10px;color:var(--text3);letter-spacing:0.12em;text-transform:uppercase;margin-top:5px}
 
-/* SECTIONS */
-section{padding:96px 48px}
+section{padding:88px 48px}
 .sec-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:14px}
-.sec-title{font-size:clamp(30px,4vw,46px);font-weight:800;line-height:1.05;letter-spacing:-0.02em;margin-bottom:14px}
-.sec-sub{font-size:14px;color:var(--text2);line-height:1.7;max-width:460px;font-weight:400}
+.sec-title{font-size:clamp(28px,4vw,44px);font-weight:800;line-height:1.05;letter-spacing:-0.02em;margin-bottom:14px}
+.sec-sub{font-size:14px;color:var(--text2);line-height:1.75;max-width:460px;font-weight:400}
 
-/* PORTFOLIO SECTION */
 .portfolio-section{background:var(--bg2)}
-.portfolio-grid{display:grid;grid-template-columns:1fr 380px;gap:28px;margin-top:44px;align-items:start}
-
-/* TOTALS */
 .totals-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}
 .t-card{background:var(--bg3);border:1px solid var(--border);border-radius:7px;padding:18px}
 .t-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);margin-bottom:8px}
 .t-val{font-family:'DM Mono',monospace;font-size:20px;font-weight:500;color:var(--text)}
-.t-val.green{color:var(--green)}
-.t-val.red{color:var(--red)}
-.t-val.gold{color:var(--gold)}
+.t-val.green{color:var(--green)}.t-val.red{color:var(--red)}.t-val.gold{color:var(--gold)}
 
-/* TABLE */
+.portfolio-grid{display:grid;grid-template-columns:1fr 360px;gap:24px;margin-top:40px;align-items:start}
 .table-wrap{background:var(--bg3);border:1px solid var(--border);border-radius:8px;overflow:hidden}
-.table-header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--border);background:var(--bg4)}
+.table-header{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--border);background:var(--bg4)}
 .table-title{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text2)}
-.btn-refresh{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.08em;color:var(--gold);background:transparent;border:1px solid rgba(201,168,76,0.3);padding:4px 12px;border-radius:3px;cursor:pointer;transition:border-color 0.2s}
+.btn-refresh{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.08em;color:var(--gold);background:transparent;border:1px solid rgba(201,168,76,0.3);padding:4px 11px;border-radius:3px;cursor:pointer;transition:border-color 0.2s}
 .btn-refresh:hover{border-color:var(--gold)}
-table{width:100%;border-collapse:collapse;table-layout:fixed}
-col.ca{width:28%}col.cb{width:9%}col.cc{width:12%}col.cd{width:12%}col.ce{width:12%}col.cf{width:12%}col.cg{width:15%}
-thead th{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);padding:10px 14px;text-align:right;font-weight:400;border-bottom:1px solid var(--border)}
-thead th:first-child{text-align:left}
-tbody tr{border-bottom:1px solid rgba(30,37,48,0.8);transition:background 0.12s}
-tbody tr:last-child{border-bottom:none}
-tbody tr:hover{background:rgba(255,255,255,0.02)}
-td{padding:13px 14px;font-size:12px;text-align:right;vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-td:first-child{text-align:left}
+.tbl{width:100%;border-collapse:collapse}
+.tbl th{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);padding:10px 13px;text-align:right;font-weight:400;border-bottom:1px solid var(--border)}
+.tbl th:first-child{text-align:left}
+.tbl td{padding:12px 13px;font-size:12px;text-align:right;vertical-align:middle;border-bottom:1px solid rgba(30,37,48,0.7)}
+.tbl td:first-child{text-align:left}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover td{background:rgba(255,255,255,0.015)}
 .tk{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;color:var(--gold);display:block}
 .tn{font-size:10px;color:var(--text3);margin-top:2px}
 .mono{font-family:'DM Mono',monospace;font-size:12px}
 .up{color:var(--green)}.dn{color:var(--red)}.neu{color:var(--text2)}
-.shimmer{color:var(--text3);animation:shim 1.2s infinite}
-@keyframes shim{0%,100%{opacity:0.3}50%{opacity:0.9}}
+.shim{color:var(--text3);animation:sh 1.2s infinite}
+@keyframes sh{0%,100%{opacity:0.3}50%{opacity:0.9}}
 
-/* CHART SIDEBAR */
-.chart-sidebar{display:flex;flex-direction:column;gap:16px}
+.chart-sidebar{display:flex;flex-direction:column;gap:14px}
 .chart-card{background:var(--bg3);border:1px solid var(--border);border-radius:8px;overflow:hidden}
-.chart-card-header{padding:14px 18px;border-bottom:1px solid var(--border);background:var(--bg4)}
-.chart-card-title{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text2)}
-.chart-body{padding:18px}
-.chart-container{position:relative;height:200px}
-
-/* SECTOR BARS */
-.sector-bars{display:flex;flex-direction:column;gap:10px;padding:16px 18px}
-.sbar{display:flex;flex-direction:column;gap:5px}
-.sbar-top{display:flex;justify-content:space-between;align-items:center}
+.cc-header{padding:13px 16px;border-bottom:1px solid var(--border);background:var(--bg4)}
+.cc-title{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text2)}
+.cc-body{padding:16px}
+.chart-container{position:relative;height:190px}
+.sector-bars{display:flex;flex-direction:column;gap:10px;padding:14px 16px}
+.sbar-top{display:flex;justify-content:space-between;margin-bottom:5px}
 .sbar-name{font-size:11px;color:var(--text2)}
 .sbar-pct{font-family:'DM Mono',monospace;font-size:11px;color:var(--gold)}
 .sbar-track{height:2px;background:var(--border2);border-radius:1px}
-.sbar-fill{height:2px;background:var(--gold);border-radius:1px;transition:width 0.6s ease}
+.sbar-fill{height:2px;background:var(--gold);border-radius:1px;transition:width 0.8s ease}
 
-/* TESIS */
 .tesis-section{background:var(--bg)}
 .tesis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px}
 .tesis-card{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:26px 22px;position:relative;overflow:hidden;transition:border-color 0.2s,transform 0.2s}
@@ -133,7 +109,6 @@ td:first-child{text-align:left}
 .tesis-tickers{margin-top:18px;display:flex;flex-wrap:wrap;gap:6px}
 .ttag{font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);border:1px solid rgba(201,168,76,0.25);padding:3px 8px;border-radius:2px}
 
-/* FILOSOFIA */
 .filo-section{background:var(--bg2);border-top:1px solid var(--border)}
 .filo-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:44px;align-items:start}
 .fq{border-left:2px solid var(--gold);padding-left:18px;margin-bottom:20px}
@@ -146,46 +121,36 @@ td:first-child{text-align:left}
 .p-title{font-size:13px;font-weight:600;margin-bottom:4px}
 .p-text{font-size:12px;color:var(--text2);line-height:1.6;font-weight:400}
 
-/* SOCIAL */
 .social-section{background:var(--bg);border-top:1px solid var(--border)}
 .social-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:44px}
 .social-card{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:22px;transition:border-color 0.2s;text-decoration:none;color:inherit;display:block}
 .social-card:hover{border-color:rgba(201,168,76,0.4)}
 .sc-platform{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text3);margin-bottom:14px}
 .sc-handle{font-size:19px;font-weight:700;color:var(--gold);margin-bottom:7px}
-.sc-desc{font-size:12px;color:var(--text2);line-height:1.6;font-weight:400}
+.sc-desc{font-size:12px;color:var(--text2);line-height:1.65;font-weight:400}
 .sc-arrow{display:inline-block;margin-top:14px;font-size:18px;color:var(--gold);transition:transform 0.2s}
 .social-card:hover .sc-arrow{transform:translate(3px,-3px)}
 
-/* CTA */
 .cta-section{text-align:center;padding:110px 48px;position:relative;overflow:hidden}
-.cta-glow{position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 50% 50%,rgba(201,168,76,0.055) 0%,transparent 70%)}
-.cta-section h2{font-size:clamp(38px,6vw,70px);font-weight:800;letter-spacing:-0.03em;line-height:1;margin-bottom:18px;position:relative}
-.cta-section p{font-size:15px;color:var(--text2);margin-bottom:36px;font-weight:400;position:relative}
+.cta-glow{position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 50% 50%,rgba(201,168,76,0.05) 0%,transparent 70%)}
+.cta-section h2{font-size:clamp(36px,6vw,68px);font-weight:800;letter-spacing:-0.03em;line-height:1;margin-bottom:18px;position:relative}
+.cta-section p{font-size:14px;color:var(--text2);margin-bottom:36px;font-weight:400;position:relative}
 .cta-btns{display:flex;gap:14px;justify-content:center;position:relative}
 
-/* FOOTER */
 footer{padding:28px 48px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
 .footer-brand{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase}
-.footer-disc{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);text-align:center;line-height:1.5;max-width:380px}
+.footer-disc{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);text-align:center;line-height:1.6;max-width:380px}
 .footer-copy{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3)}
-
-/* ERROR */
 .error-box{background:rgba(232,85,85,0.07);border:1px solid rgba(232,85,85,0.2);border-radius:6px;padding:12px 16px;margin-bottom:16px;font-size:12px;color:var(--red);line-height:1.6;display:none}
 
-@media(max-width:900px){
+@media(max-width:960px){
   nav{padding:14px 20px}.nav-links{display:none}
-  .hero{padding:100px 20px 60px}.hero-stats{gap:24px;flex-wrap:wrap}
-  section{padding:64px 20px}
+  .hero{padding:100px 20px 60px}.hero-stats{gap:24px}
+  section{padding:60px 20px}
   .portfolio-grid{grid-template-columns:1fr}
   .totals-row{grid-template-columns:1fr 1fr}
-  .tesis-grid{grid-template-columns:1fr}
-  .filo-grid{grid-template-columns:1fr}
-  .social-grid{grid-template-columns:1fr}
+  .tesis-grid,.filo-grid,.social-grid{grid-template-columns:1fr}
   footer{flex-direction:column;text-align:center;padding:24px 20px}
-  col.cb,col.cc,col.ce{display:none}
-  td:nth-child(2),td:nth-child(3),td:nth-child(5){display:none}
-  th:nth-child(2),th:nth-child(3),th:nth-child(5){display:none}
 }
 </style>
 </head>
@@ -200,48 +165,40 @@ footer{padding:28px 48px;border-top:1px solid var(--border);display:flex;align-i
     <a href="#social">Comunidad</a>
   </div>
   <div class="nav-right">
-    <div class="status-pill"><div class="dot" id="nav-dot"></div><span id="nav-status">Cargando...</span></div>
+    <div class="status-pill"><div class="dot" id="ndot"></div><span id="nstatus">Cargando...</span></div>
     <a href="https://x.com/XabierInvests" class="btn-nav" target="_blank">Seguir en X →</a>
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-grid"></div>
-  <div class="hero-tag"><div class="dot"></div>Inversión real · Desde dic 2024</div>
-  <h1>
-    Invertir<br>
-    <span class="outline">con</span><br>
-    <span class="gold">criterio.</span>
-  </h1>
+  <div class="hero-tag"><div class="dot live"></div>Inversión real · Desde dic 2024</div>
+  <h1>Invertir<br><span class="outline">con</span><br><span class="gold">criterio.</span></h1>
   <p class="hero-sub">Documentando mi camino desde micro-capital hacia la independencia financiera. Sin señales. Sin suerte. Solo datos, tesis y paciencia.</p>
   <div class="hero-btns">
     <a href="#portfolio" class="btn-primary">Ver cartera en vivo</a>
     <a href="#filosofia" class="btn-ghost">Mi filosofía</a>
   </div>
   <div class="hero-stats">
-    <div><div class="hstat-val green" id="hero-return">+17,23%</div><div class="hstat-label">Retorno total</div></div>
-    <div><div class="hstat-val gold" id="hero-value">€1.768</div><div class="hstat-label">Valor actual</div></div>
+    <div><div class="hstat-val green" id="h-ret">+10,52%</div><div class="hstat-label">Retorno total</div></div>
+    <div><div class="hstat-val gold" id="h-val">€1.766</div><div class="hstat-label">Valor actual</div></div>
     <div><div class="hstat-val">9</div><div class="hstat-label">Posiciones</div></div>
     <div><div class="hstat-val">16+</div><div class="hstat-label">Meses invertido</div></div>
   </div>
 </section>
 
-<!-- PORTFOLIO -->
 <section class="portfolio-section" id="portfolio">
   <div class="sec-tag">// Cartera en tiempo real</div>
   <div class="sec-title">Posiciones<br>actualizadas.</div>
   <p class="sec-sub">Transparencia total. Cada posición tiene una tesis detrás. Actualización automática cada 90 segundos.</p>
-
-  <div style="margin-top:44px">
-    <div class="error-box" id="error-box"></div>
+  <div style="margin-top:40px">
+    <div class="error-box" id="ebox"></div>
     <div class="totals-row">
-      <div class="t-card"><div class="t-label">Invertido</div><div class="t-val gold" id="t-inv">—</div></div>
+      <div class="t-card"><div class="t-label">Invertido</div><div class="t-val gold" id="t-inv">€1.597,75</div></div>
       <div class="t-card"><div class="t-label">Valor actual</div><div class="t-val" id="t-cur">—</div></div>
       <div class="t-card"><div class="t-label">Ganancia €</div><div class="t-val" id="t-gain">—</div></div>
       <div class="t-card"><div class="t-label">Retorno %</div><div class="t-val" id="t-pct">—</div></div>
     </div>
-
     <div class="portfolio-grid">
       <div>
         <div class="table-wrap">
@@ -249,33 +206,35 @@ footer{padding:28px 48px;border-top:1px solid var(--border);display:flex;align-i
             <span class="table-title">Posiciones abiertas</span>
             <button class="btn-refresh" onclick="loadPrices()">↻ Actualizar</button>
           </div>
-          <table>
-            <colgroup><col class="ca"><col class="cb"><col class="cc"><col class="cd"><col class="ce"><col class="cf"><col class="cg"></colgroup>
+          <table class="tbl">
             <thead><tr>
-              <th style="text-align:left">Activo</th><th>Acciones</th><th>P. Medio</th>
-              <th>P. Actual</th><th>Invertido</th><th>Valor</th><th>+/- %</th>
+              <th style="text-align:left">Activo</th>
+              <th>Acciones</th>
+              <th>Comprar en</th>
+              <th>Posición</th>
+              <th>P/L %</th>
             </tr></thead>
             <tbody id="tbody"></tbody>
           </table>
         </div>
+        <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);text-align:right;margin-top:8px" id="lupd"></div>
       </div>
-
       <div class="chart-sidebar">
         <div class="chart-card">
-          <div class="chart-card-header"><div class="chart-card-title">Distribución por valor</div></div>
-          <div class="chart-body"><div class="chart-container"><canvas id="donutChart"></canvas></div></div>
+          <div class="cc-header"><div class="cc-title">Distribución por valor</div></div>
+          <div class="cc-body"><div class="chart-container"><canvas id="donut"></canvas></div></div>
         </div>
         <div class="chart-card">
-          <div class="chart-card-header"><div class="chart-card-title">Sectores</div></div>
-          <div class="sector-bars" id="sector-bars">
-            <div class="sbar"><div class="sbar-top"><span class="sbar-name">Inteligencia Artificial</span><span class="sbar-pct">—</span></div><div class="sbar-track"><div class="sbar-fill" id="sb-ai" style="width:0%"></div></div></div>
-            <div class="sbar"><div class="sbar-top"><span class="sbar-name">Crypto / Bitcoin</span><span class="sbar-pct" id="sp-crypto">—</span></div><div class="sbar-track"><div class="sbar-fill" id="sb-crypto" style="width:0%"></div></div></div>
-            <div class="sbar"><div class="sbar-top"><span class="sbar-name">Semiconductores</span><span class="sbar-pct" id="sp-semi">—</span></div><div class="sbar-track"><div class="sbar-fill" id="sb-semi" style="width:0%"></div></div></div>
-            <div class="sbar"><div class="sbar-top"><span class="sbar-name">Espacio</span><span class="sbar-pct" id="sp-space">—</span></div><div class="sbar-track"><div class="sbar-fill" id="sb-space" style="width:0%"></div></div></div>
-            <div class="sbar"><div class="sbar-top"><span class="sbar-name">ETF / Liquidez</span><span class="sbar-pct" id="sp-etf">—</span></div><div class="sbar-track"><div class="sbar-fill" id="sb-etf" style="width:0%"></div></div></div>
+          <div class="cc-header"><div class="cc-title">Sectores</div></div>
+          <div class="sector-bars">
+            <div><div class="sbar-top"><span class="sbar-name">Crypto / Bitcoin</span><span class="sbar-pct" id="sp-c">—</span></div><div class="sbar-track"><div class="sbar-fill" id="sb-c" style="width:0"></div></div></div>
+            <div><div class="sbar-top"><span class="sbar-name">Inteligencia Artificial</span><span class="sbar-pct" id="sp-a">—</span></div><div class="sbar-track"><div class="sbar-fill" id="sb-a" style="width:0"></div></div></div>
+            <div><div class="sbar-top"><span class="sbar-name">Semiconductores</span><span class="sbar-pct" id="sp-s">—</span></div><div class="sbar-track"><div class="sbar-fill" id="sb-s" style="width:0"></div></div></div>
+            <div><div class="sbar-top"><span class="sbar-name">Espacio</span><span class="sbar-pct" id="sp-e">—</span></div><div class="sbar-track"><div class="sbar-fill" id="sb-e" style="width:0"></div></div></div>
+            <div><div class="sbar-top"><span class="sbar-name">ETF Global</span><span class="sbar-pct" id="sp-f">—</span></div><div class="sbar-track"><div class="sbar-fill" id="sb-f" style="width:0"></div></div></div>
           </div>
         </div>
-        <div style="padding:14px 18px;background:var(--bg3);border:1px solid var(--border);border-radius:8px">
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px 16px">
           <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text3);margin-bottom:10px">Brokers</div>
           <div style="display:flex;gap:8px;flex-wrap:wrap">
             <span style="font-size:11px;color:var(--text2);background:var(--bg4);padding:5px 10px;border-radius:3px;border:1px solid var(--border)">Trade Republic</span>
@@ -285,11 +244,9 @@ footer{padding:28px 48px;border-top:1px solid var(--border);display:flex;align-i
         </div>
       </div>
     </div>
-    <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);text-align:right;margin-top:10px" id="last-update"></div>
   </div>
 </section>
 
-<!-- TESIS -->
 <section class="tesis-section" id="tesis">
   <div class="sec-tag">// Tesis de inversión</div>
   <div class="sec-title">Las apuestas<br>tienen argumento.</div>
@@ -297,26 +254,25 @@ footer{padding:28px 48px;border-top:1px solid var(--border);display:flex;align-i
   <div class="tesis-grid">
     <div class="tesis-card">
       <div class="tesis-num">01</div>
-      <div class="tesis-title">Inteligencia Artificial</div>
-      <div class="tesis-desc">La IA es la infraestructura del próximo ciclo económico. Las empresas que controlan los datos y los modelos ganarán desproporcionadamente al resto.</div>
-      <div class="tesis-tickers"><span class="ttag">PLTR</span><span class="ttag">ORCL</span></div>
+      <div class="tesis-title">Crypto & Bitcoin</div>
+      <div class="tesis-desc">Bitcoin como reserva de valor digital. ETH como capa de liquidación. MSTR como proxy BTC institucional. GLXY e IREN como infraestructura del ecosistema.</div>
+      <div class="tesis-tickers"><span class="ttag">MST</span><span class="ttag">ETH</span><span class="ttag">GLXY</span><span class="ttag">IREN</span></div>
     </div>
     <div class="tesis-card">
       <div class="tesis-num">02</div>
-      <div class="tesis-title">Espacio & Conectividad</div>
-      <div class="tesis-desc">La cobertura global por satélite es el problema de telecomunicaciones más grande sin resolver. Quien lo solucione captura un mercado de billones.</div>
-      <div class="tesis-tickers"><span class="ttag">ASTS</span></div>
+      <div class="tesis-title">Inteligencia Artificial</div>
+      <div class="tesis-desc">La IA es la infraestructura del próximo ciclo. Palantir domina los datos gubernamentales y corporativos. Oracle es la base de datos que alimenta los modelos.</div>
+      <div class="tesis-tickers"><span class="ttag">PLTR</span><span class="ttag">ORCL</span></div>
     </div>
     <div class="tesis-card">
       <div class="tesis-num">03</div>
-      <div class="tesis-title">Crypto & Bitcoin</div>
-      <div class="tesis-desc">Bitcoin como reserva de valor. ETH como capa de liquidación digital. MSTR como proxy de BTC con apalancamiento institucional. GLXY como infraestructura.</div>
-      <div class="tesis-tickers"><span class="ttag">MST</span><span class="ttag">ETH</span><span class="ttag">GLXY</span><span class="ttag">IREN</span></div>
+      <div class="tesis-title">Espacio & Semiconductores</div>
+      <div class="tesis-desc">ASTS resuelve la cobertura global por satélite — un mercado de billones sin resolver. AMD es el proveedor de chips para la nueva era de computación.</div>
+      <div class="tesis-tickers"><span class="ttag">ASTS</span><span class="ttag">AMD</span></div>
     </div>
   </div>
 </section>
 
-<!-- FILOSOFIA -->
 <section class="filo-section" id="filosofia">
   <div class="sec-tag">// Filosofía</div>
   <div class="sec-title">El proceso<br>importa más.</div>
@@ -324,13 +280,13 @@ footer{padding:28px 48px;border-top:1px solid var(--border);display:flex;align-i
     <div>
       <div class="fq"><div class="fq-text">"El mercado es un mecanismo para transferir dinero del impaciente al paciente."</div><div class="fq-attr">Warren Buffett — el manual</div></div>
       <div class="fq"><div class="fq-text">"No pretendo predecir el mercado. Construyo una cartera que sobrevive si me equivoco en el timing."</div><div class="fq-attr">XabierInvests — aprendiendo en público</div></div>
-      <div style="margin-top:8px;padding:18px;background:var(--bg2);border:1px solid var(--border);border-radius:6px">
+      <div style="margin-top:8px;padding:18px;background:var(--bg);border:1px solid var(--border);border-radius:6px">
         <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text3);margin-bottom:10px">Mi perfil</div>
-        <div style="font-size:12px;color:var(--text2);line-height:1.9;font-weight:400">
+        <div style="font-size:12px;color:var(--text2);line-height:2;font-weight:400">
           Técnico IT junior · Navarra · ~20 años<br>
           CCNA en curso · Fortinet NSE4 en progreso<br>
           Invirtiendo desde micro-capital · DYOR siempre<br>
-          <span style="color:var(--gold)">linkedin.com/in/xabierpereira</span>
+          <a href="https://linkedin.com/in/xabierpereira" style="color:var(--gold);text-decoration:none">linkedin.com/in/xabierpereira</a>
         </div>
       </div>
     </div>
@@ -338,12 +294,11 @@ footer{padding:28px 48px;border-top:1px solid var(--border);display:flex;align-i
       <div class="principio"><div class="p-num">01</div><div><div class="p-title">Datos, no emociones</div><div class="p-text">Las decisiones se toman con tesis escritas. Si no puedo explicar por qué compro en un párrafo, no compro.</div></div></div>
       <div class="principio"><div class="p-num">02</div><div><div class="p-title">Largo plazo no negocia</div><div class="p-text">Horizonte 10+ años. Los drawdowns no son pérdidas, son descuentos. La volatilidad da oportunidades.</div></div></div>
       <div class="principio"><div class="p-num">03</div><div><div class="p-title">Transparencia total</div><div class="p-text">Comparto resultados reales — los buenos y los malos. Sin cherry-picking. La accountability mejora las decisiones.</div></div></div>
-      <div class="principio"><div class="p-num">04</div><div><div class="p-title">Concentración en convicción</div><div class="p-text">Prefiero 9 posiciones con tesis fuertes que 40 sin criterio. Diversificar no es dispersar.</div></div></div>
+      <div class="principio"><div class="p-num">04</div><div><div class="p-title">Concentración en convicción</div><div class="p-text">Prefiero 9 posiciones con tesis fuertes que 40 sin criterio. Diversificar no es dispersar capital sin pensar.</div></div></div>
     </div>
   </div>
 </section>
 
-<!-- SOCIAL -->
 <section class="social-section" id="social">
   <div class="sec-tag">// Comunidad</div>
   <div class="sec-title">Aprende<br>en público.</div>
@@ -352,13 +307,13 @@ footer{padding:28px 48px;border-top:1px solid var(--border);display:flex;align-i
     <a href="https://x.com/XabierInvests" class="social-card" target="_blank">
       <div class="sc-platform">X (Twitter)</div>
       <div class="sc-handle">@XabierInvests</div>
-      <div class="sc-desc">Actualizaciones de cartera, análisis de tesis, reflexiones sobre el proceso inversor. DYOR.</div>
+      <div class="sc-desc">Actualizaciones de cartera, análisis de tesis y reflexiones sobre el proceso inversor. DYOR.</div>
       <div class="sc-arrow">↗</div>
     </a>
     <a href="https://github.com/xabierpereira" class="social-card" target="_blank">
       <div class="sc-platform">GitHub</div>
       <div class="sc-handle">xabierpereira</div>
-      <div class="sc-desc">Proyectos IT, scripts y herramientas. El lado técnico del inversor.</div>
+      <div class="sc-desc">Proyectos IT, scripts y herramientas. El lado técnico del inversor-desarrollador.</div>
       <div class="sc-arrow">↗</div>
     </a>
     <a href="https://linkedin.com/in/xabierpereira" class="social-card" target="_blank">
@@ -376,184 +331,133 @@ footer{padding:28px 48px;border-top:1px solid var(--border);display:flex;align-i
   </div>
 </section>
 
-<!-- CTA -->
 <section class="cta-section">
   <div class="cta-glow"></div>
   <h2>¿Empiezas<br><span style="color:var(--gold)">a invertir?</span></h2>
   <p>Comparto todo lo que aprendo. Sin filtros. DYOR siempre.</p>
-  <div class="cta-btns">
-    <a href="https://x.com/XabierInvests" class="btn-primary" target="_blank">Seguir el viaje →</a>
-  </div>
+  <div class="cta-btns"><a href="https://x.com/XabierInvests" class="btn-primary" target="_blank">Seguir el viaje →</a></div>
 </section>
 
 <footer>
   <div class="footer-brand">XabierInvests</div>
-  <div class="footer-disc">Contenido educativo. No es asesoramiento financiero. DYOR. Rentabilidades pasadas no garantizan rentabilidades futuras.</div>
+  <div class="footer-disc">Contenido educativo · No es asesoramiento financiero · DYOR · Rentabilidades pasadas no garantizan rentabilidades futuras</div>
   <div class="footer-copy">© 2026</div>
 </footer>
 
 <script>
-const PROXY_URL = 'https://xabierinvests-api.vercel.app/api/prices';
+const PROXY = 'https://xabierinvests-api.vercel.app/api/prices';
 
-const POSITIONS = [
-  {tk:'MST',  sym:'MSTR',     name:'Strategy Inc',        shares:3,        avg:128.15, cur:'USD', sector:'crypto'},
-  {tk:'GLXY', sym:'GLXY.TO',  name:'Galaxy Digital',      shares:10.986528,avg:21.97,  cur:'CAD', sector:'crypto'},
-  {tk:'ORCL', sym:'ORCL',     name:'Oracle',              shares:1.453309, avg:146.80, cur:'USD', sector:'ai'},
-  {tk:'AMD',  sym:'AMD',      name:'AMD',                 shares:0.894,    avg:179.32, cur:'USD', sector:'semi'},
-  {tk:'IREN', sym:'IREN',     name:'Iris Energy',         shares:4.745362, avg:36.87,  cur:'USD', sector:'crypto'},
-  {tk:'ASTS', sym:'ASTS',     name:'AST SpaceMobile',     shares:2.04918,  avg:49.00,  cur:'USD', sector:'space'},
-  {tk:'ISAC', sym:'ISAC.L',   name:'iShares MSCI ACWI',   shares:1.366407, avg:95.14,  cur:'GBP', sector:'etf'},
-  {tk:'PLTR', sym:'PLTR',     name:'Palantir Tech',       shares:1,        avg:125.88, cur:'USD', sector:'ai'},
-  {tk:'ETH',  sym:'ETH-EUR',  name:'Ethereum',            shares:0.000353, avg:2634.56,cur:'EUR', sector:'crypto'},
+// Datos de Getquin como referencia — mercado Xetra via Trade Republic
+// invested = precio_medio × acciones (en EUR, ya que TR opera en EUR)
+const POS = [
+  {tk:'MST',  sym:'MSTR',    name:'Strategy Inc',       sh:3,        inv:384.45, pm:128.15, cur:'USD', sec:'c'},
+  {tk:'GLXY', sym:'GLXY.TO', name:'Galaxy Digital',     sh:10.99,    inv:215.27, pm:19.59,  cur:'CAD', sec:'c'},
+  {tk:'ORCL', sym:'ORCL',    name:'Oracle',             sh:1.453,    inv:213.35, pm:146.80, cur:'USD', sec:'a'},
+  {tk:'AMD',  sym:'AMD',     name:'AMD',                sh:0.894,    inv:160.31, pm:179.32, cur:'USD', sec:'s'},
+  {tk:'IREN', sym:'IREN',    name:'Iris Energy',        sh:4.745,    inv:174.99, pm:36.88,  cur:'USD', sec:'c'},
+  {tk:'ASTS', sym:'ASTS',    name:'AST SpaceMobile',    sh:2.049,    inv:100.41, pm:49.00,  cur:'USD', sec:'e'},
+  {tk:'ISAC', sym:'ISAC.L',  name:'iShares MSCI ACWI',  sh:1.366,    inv:130.00, pm:95.14,  cur:'GBP', sec:'f'},
+  {tk:'PLTR', sym:'PLTR',    name:'Palantir Tech',      sh:1,        inv:125.88, pm:125.88, cur:'USD', sec:'a'},
+  {tk:'ETH',  sym:'ETH-EUR', name:'Ethereum',           sh:0.0357,   inv:93.09,  pm:2607.63,cur:'EUR', sec:'c'},
 ];
 
-const FX = ['USDEUR=X','CADEUR=X','GBPEUR=X'];
-const SECTOR_LABELS = {ai:'Inteligencia Artificial',crypto:'Crypto / Bitcoin',semi:'Semiconductores',space:'Espacio',etf:'ETF / Liquidez'};
-const SECTOR_IDS = {ai:'ai',crypto:'crypto',semi:'semi',space:'space',etf:'etf'};
-const CHART_COLORS = ['#c9a84c','#2dba7e','#378add','#d4537e','#888780','#ef9f27','#5dcaa5','#e85555','#afa9ec'];
+// Capital invertido total real de Getquin
+const TOTAL_INV = 1597.75;
 
-let donutChart = null;
+const FX = ['USDEUR=X','CADEUR=X','GBPEUR=X'];
+const COLORS = ['#c9a84c','#2dba7e','#378add','#d4537e','#ef9f27','#5dcaa5','#afa9ec','#e85555','#888780'];
+let chart = null;
 
 function f(n,d=2){return n.toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d})}
-function setStatus(state,txt){
-  document.getElementById('nav-dot').className='dot'+(state==='live'?' live':state==='err'?' err':'');
-  document.getElementById('nav-status').textContent=txt;
-}
-
-async function fetchAll(symbols){
-  const r = await fetch(`${PROXY_URL}?symbols=${symbols.join(',')}`);
-  if(!r.ok) throw new Error(`HTTP ${r.status}`);
-  return r.json();
-}
-
-function renderDonut(labels, values, colors){
-  const ctx = document.getElementById('donutChart').getContext('2d');
-  if(donutChart) donutChart.destroy();
-  donutChart = new Chart(ctx, {
-    type:'doughnut',
-    data:{
-      labels,
-      datasets:[{data:values,backgroundColor:colors,borderColor:'#0d1117',borderWidth:2,hoverBorderWidth:3}]
-    },
-    options:{
-      responsive:true,maintainAspectRatio:false,
-      cutout:'68%',
-      plugins:{
-        legend:{display:false},
-        tooltip:{
-          backgroundColor:'#111820',borderColor:'#2a3340',borderWidth:1,
-          titleColor:'#c9a84c',bodyColor:'#9a9590',padding:10,
-          callbacks:{label:ctx=>' '+ctx.label+': '+f(ctx.parsed)+'€ ('+f(ctx.parsed/values.reduce((a,b)=>a+b,0)*100,1)+'%)'}
-        }
-      }
-    }
-  });
-}
-
-function updateSectors(positions, values, rates, data){
-  const sectorVals = {ai:0,crypto:0,semi:0,space:0,etf:0};
-  positions.forEach((pos,i)=>{
-    const priceData = data[pos.sym];
-    if(priceData?.price){
-      const fxRate = rates[priceData.currency] || rates[pos.cur] || 1;
-      const val = pos.shares * priceData.price * fxRate;
-      sectorVals[pos.sector] = (sectorVals[pos.sector]||0) + val;
-    }
-  });
-  const total = Object.values(sectorVals).reduce((a,b)=>a+b,0);
-  Object.entries(sectorVals).forEach(([k,v])=>{
-    const pct = total>0 ? (v/total*100) : 0;
-    const spEl = document.getElementById('sp-'+k);
-    const sbEl = document.getElementById('sb-'+k);
-    if(spEl) spEl.textContent = f(pct,1)+'%';
-    if(sbEl) sbEl.style.width = pct+'%';
-  });
+function setStatus(st,txt){
+  document.getElementById('ndot').className='dot'+(st==='live'?' live':st==='err'?' err':'');
+  document.getElementById('nstatus').textContent=txt;
 }
 
 async function loadPrices(){
   setStatus('','Actualizando...');
-  document.getElementById('error-box').style.display='none';
-  try {
-    const allSyms = [...POSITIONS.map(p=>p.sym), ...FX];
-    const data = await fetchAll(allSyms);
+  document.getElementById('ebox').style.display='none';
+  try{
+    const data = await fetch(`${PROXY}?symbols=${[...POS.map(p=>p.sym),...FX].join(',')}`).then(r=>r.json());
+    const rates={EUR:1,USD:data['USDEUR=X']?.price||0.92,CAD:data['CADEUR=X']?.price||0.68,GBP:data['GBPEUR=X']?.price||1.17};
 
-    const rates = {EUR:1};
-    rates['USD'] = data['USDEUR=X']?.price || 0.92;
-    rates['CAD'] = data['CADEUR=X']?.price || 0.68;
-    rates['GBP'] = data['GBPEUR=X']?.price || 1.17;
+    let totalCur=0, ok=0;
+    let html='', dLabels=[], dVals=[], dColors=[];
+    const secVals={c:0,a:0,s:0,e:0,f:0};
 
-    let totalInv=0, totalCur=0, ok=0;
-    let html='';
-    const donutLabels=[], donutVals=[], donutColors=[];
-
-    POSITIONS.forEach((pos,i)=>{
-      const avgEUR = pos.avg * rates[pos.cur];
-      const invested = pos.shares * avgEUR;
-      totalInv += invested;
-
-      const pd = data[pos.sym];
-      let priceEUR=null, currentVal=null, gain=null, pct=null;
+    POS.forEach((p,i)=>{
+      const pd=data[p.sym];
+      let priceEUR=null, pos=null, gain=null, pct=null;
       if(pd?.price){
         ok++;
-        const fx = rates[pd.currency] || rates[pos.cur] || 1;
-        priceEUR = pd.price * fx;
-        currentVal = pos.shares * priceEUR;
-        gain = currentVal - invested;
-        pct = (gain/invested)*100;
-        totalCur += currentVal;
-        donutLabels.push(pos.tk);
-        donutVals.push(parseFloat(currentVal.toFixed(2)));
-        donutColors.push(CHART_COLORS[i % CHART_COLORS.length]);
+        const fx=rates[pd.currency]||rates[p.cur]||1;
+        priceEUR=pd.price*fx;
+        pos=p.sh*priceEUR;
+        gain=pos-p.inv;
+        pct=(gain/p.inv)*100;
+        totalCur+=pos;
+        secVals[p.sec]=(secVals[p.sec]||0)+pos;
+        dLabels.push(p.tk);
+        dVals.push(parseFloat(pos.toFixed(2)));
+        dColors.push(COLORS[i]);
       } else {
-        totalCur += invested;
+        totalCur+=p.inv;
+        secVals[p.sec]=(secVals[p.sec]||0)+p.inv;
       }
 
-      const cl = gain===null?'neu':gain>=0?'up':'dn';
-      const arr = gain===null?'':gain>=0?'↑ ':'↓ ';
-      const sg = gain===null?'':gain>=0?'+':'';
-      html += `<tr>
-        <td><span class="tk">${pos.tk}</span><span class="tn">${pos.name}</span></td>
-        <td class="mono neu">${f(pos.shares,pos.shares<0.01?5:pos.shares<1?4:3)}</td>
-        <td class="mono neu">${f(avgEUR)}€</td>
-        <td class="mono ${cl}">${priceEUR!==null?f(priceEUR)+'€':'<span class="shimmer">···</span>'}</td>
-        <td class="mono neu">${f(invested)}€</td>
-        <td class="mono ${cl}">${currentVal!==null?f(currentVal)+'€':'<span class="shimmer">···</span>'}</td>
-        <td class="mono ${cl}">${pct!==null?arr+sg+f(pct,2)+'%':'<span class="shimmer">···</span>'}</td>
+      const cl=gain===null?'neu':gain>=0?'up':'dn';
+      const arrow=gain===null?'':gain>=0?'↑ ':'↓ ';
+      const sg=pct!==null&&pct<0?'':'+';
+      html+=`<tr>
+        <td><span class="tk">${p.tk}</span><span class="tn">${p.name}</span></td>
+        <td class="mono neu">${f(p.sh,p.sh<0.01?4:p.sh<1?3:p.sh<10?3:2)}</td>
+        <td class="mono neu">${f(p.inv)}€<br><span style="font-size:10px;color:var(--text3)">${f(p.pm)}€/acc</span></td>
+        <td class="mono ${cl}">${priceEUR!==null?f(pos)+'€':'<span class="shim">···</span>'}<br><span style="font-size:10px">${priceEUR!==null?f(priceEUR)+'€/acc':''}</span></td>
+        <td class="mono ${cl}">${pct!==null?arrow+(pct<0?'':sg)+f(Math.abs(pct))+'%':'<span class="shim">···</span>'}</td>
       </tr>`;
     });
 
-    document.getElementById('tbody').innerHTML = html;
-    if(donutVals.length) renderDonut(donutLabels, donutVals, donutColors);
-    updateSectors(POSITIONS, donutVals, rates, data);
+    document.getElementById('tbody').innerHTML=html;
 
-    const tg = totalCur - totalInv;
-    const tp = (tg/totalInv)*100;
-    const gc = tg>=0?'green':'red';
-    const sg = tg>=0?'+':'';
+    // Totals
+    const tg=totalCur-TOTAL_INV, tp=(tg/TOTAL_INV)*100;
+    const gc=tg>=0?'green':'red';
+    document.getElementById('t-inv').textContent='€'+f(TOTAL_INV);
+    document.getElementById('t-cur').textContent='€'+f(totalCur);
+    document.getElementById('t-gain').className='t-val '+gc;
+    document.getElementById('t-gain').textContent=(tg>=0?'+':'')+f(tg)+'€';
+    document.getElementById('t-pct').className='t-val '+gc;
+    document.getElementById('t-pct').textContent=(tp>=0?'+':'')+f(tp)+'%';
+    document.getElementById('h-ret').textContent=(tp>=0?'+':'')+f(tp)+'%';
+    document.getElementById('h-val').textContent='€'+f(totalCur,0);
 
-    document.getElementById('t-inv').textContent = f(totalInv)+'€';
-    document.getElementById('t-cur').textContent = f(totalCur)+'€';
-    document.getElementById('t-gain').className = 't-val '+gc;
-    document.getElementById('t-gain').textContent = sg+f(tg)+'€';
-    document.getElementById('t-pct').className = 't-val '+gc;
-    document.getElementById('t-pct').textContent = sg+f(tp,2)+'%';
+    // Donut chart
+    if(dVals.length){
+      const ctx=document.getElementById('donut').getContext('2d');
+      if(chart)chart.destroy();
+      chart=new Chart(ctx,{type:'doughnut',data:{labels:dLabels,datasets:[{data:dVals,backgroundColor:dColors,borderColor:'#0d1117',borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,cutout:'68%',plugins:{legend:{display:false},tooltip:{backgroundColor:'#111820',borderColor:'#2a3340',borderWidth:1,titleColor:'#c9a84c',bodyColor:'#9a9590',padding:10,callbacks:{label:c=>' '+c.label+': '+f(c.parsed)+'€'}}}}});
+    }
 
-    // Update hero stats
-    document.getElementById('hero-return').textContent = sg+f(tp,2)+'%';
-    document.getElementById('hero-value').textContent = '€'+f(totalCur,0);
+    // Sector bars
+    const tot=Object.values(secVals).reduce((a,b)=>a+b,0);
+    [['c','c'],['a','a'],['s','s'],['e','e'],['f','f']].forEach(([k,id])=>{
+      const pct=tot>0?secVals[k]/tot*100:0;
+      document.getElementById('sp-'+id).textContent=f(pct,1)+'%';
+      document.getElementById('sb-'+id).style.width=pct+'%';
+    });
 
-    document.getElementById('last-update').textContent = 'Actualizado: '+new Date().toLocaleTimeString('es-ES');
-    setStatus(ok===0?'err':ok<POSITIONS.length?'live':'live', ok===0?'Sin datos':`${ok}/${POSITIONS.length} activos`);
-  } catch(e){
+    document.getElementById('lupd').textContent='Actualizado: '+new Date().toLocaleTimeString('es-ES');
+    setStatus(ok===0?'err':'live', ok===0?'Sin datos':`${ok}/${POS.length} activos`);
+  }catch(e){
     setStatus('err','Error');
-    const eb = document.getElementById('error-box');
+    const eb=document.getElementById('ebox');
     eb.style.display='block';
-    eb.textContent = 'No se pudo conectar con la API. Verifica que el proxy Vercel esté activo. Error: '+e.message;
+    eb.textContent='No se pudo conectar con la API Vercel. Error: '+e.message;
   }
 }
 
 loadPrices();
-setInterval(loadPrices, 90000);
+setInterval(loadPrices,90000);
 </script>
 </body>
 </html>
